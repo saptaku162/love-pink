@@ -11,6 +11,7 @@
       background: #000;
       overflow: hidden;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       font-family: Arial, sans-serif;
@@ -40,6 +41,9 @@
       transform: rotate(-45deg);
       animation: beat 1.5s ease-in-out infinite;
       box-shadow: 0 0 30px #ff4da6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .heart::before,
@@ -76,7 +80,12 @@
       font-size: 24px;
       font-weight: bold;
       text-shadow: 0 0 10px #ff4da6;
-      transform: rotate(45deg);
+      transform: rotate(45deg); /* Biar lurus walau love miring */
+    }
+
+    /* Spotify player style */
+    .spotify {
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -84,6 +93,16 @@
   <!-- Heart utama -->
   <div class="heart">
     <div class="name">Zulfi</div>
+  </div>
+
+  <!-- Spotify Embed -->
+  <div class="spotify">
+    <iframe style="border-radius:12px"
+      src="https://open.spotify.com/embed/track/5XeFesFbtLpXzIVDNQP22n?utm_source=generator"
+      width="300" height="80" frameborder="0" allowfullscreen=""
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
   </div>
 
   <script>
