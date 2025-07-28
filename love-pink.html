@@ -3,26 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Love Pink Animation</title>
+  <title>Love Zulfi</title>
   <style>
     body {
       margin: 0;
       height: 100vh;
-      background-color: #000;
+      background: #000;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      font-family: Arial, sans-serif;
     }
+
+    /* Background love jatuh */
+    .falling-heart {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      color: #ff4da6;
+      opacity: 0.8;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+
+    /* Heart utama */
     .heart {
       width: 150px;
       height: 150px;
       background-color: #ff4da6;
       position: relative;
-      transform: rotate(-45deg) scale(0);
+      transform: rotate(-45deg);
       animation: beat 1.5s ease-in-out infinite;
       box-shadow: 0 0 30px #ff4da6;
     }
+
     .heart::before,
     .heart::after {
       content: '';
@@ -33,28 +52,58 @@
       border-radius: 50%;
       box-shadow: 0 0 30px #ff4da6;
     }
+
     .heart::before {
       top: -75px;
       left: 0;
     }
+
     .heart::after {
       left: 75px;
       top: 0;
     }
+
     @keyframes beat {
-      0% {
-        transform: rotate(-45deg) scale(0.5);
-      }
-      50% {
-        transform: rotate(-45deg) scale(1);
-      }
-      100% {
-        transform: rotate(-45deg) scale(0.5);
-      }
+      0% { transform: rotate(-45deg) scale(0.8); }
+      50% { transform: rotate(-45deg) scale(1); }
+      100% { transform: rotate(-45deg) scale(0.8); }
+    }
+
+    /* Nama di tengah love */
+    .name {
+      position: absolute;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 0 0 10px #ff4da6;
+      transform: rotate(45deg);
     }
   </style>
 </head>
 <body>
-  <div class="heart"></div>
+  <!-- Heart utama -->
+  <div class="heart">
+    <div class="name">Zulfi</div>
+  </div>
+
+  <script>
+    // Generate love jatuh
+    function createFallingHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('falling-heart');
+      heart.innerHTML = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+      document.body.appendChild(heart);
+
+      // Hapus setelah jatuh
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    // Bikin heart jatuh tiap 300ms
+    setInterval(createFallingHeart, 300);
+  </script>
 </body>
 </html>
